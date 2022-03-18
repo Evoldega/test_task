@@ -1,0 +1,58 @@
+@import '../../utils/variables'
+
+%link
+    font-weight: 300
+    font-size: 1.15em
+    font-family: $title-font
+    cursor: pointer
+    text-decoration: none
+    background-image: linear-gradient(currentColor, currentColor)
+    background-position: 0% 100%
+    background-repeat: no-repeat
+    background-size: 0% 1px
+    transition: background-size .3s
+    padding: 0
+    color: $text
+    letter-spacing: 0.12em
+    &:hover
+        background-size: 100% 1px
+
+
+.test__wrapper
+    position: fixed
+    left: 0
+    bottom: 0
+    width: 100%
+    opacity: 95%
+    background: $tertiary-color
+    @extend %center
+    flex-direction: row
+    justify-content: space-between
+
+    @media screen and (max-width: 1025px) 
+        align-items: center
+        justify-content: center
+
+    .test
+        @extend %center
+        margin-right: 100px
+        @media screen and (max-width: 1150px) 
+            margin-right: 20px
+
+        &__list
+            grid-area: 'buttons'
+            display: flex
+            flex-direction: row
+            @media screen and (max-width: 1025px) 
+                flex-direction: column
+
+        &__item
+            @extend %center
+            list-style-type: none
+            margin-right: 15px
+
+        &__link
+            transition: all 0.3s ease-in-out
+            display: flex
+            @extend %link
+                
