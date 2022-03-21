@@ -10,9 +10,6 @@ import Button from '../Button/Button'
 import Title from '../Title/Title'
 import Error from '../Error/Error'
 
-
-
-
 function emailHandler(e) {
     let value = e.target.value
     let req = /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i
@@ -45,7 +42,17 @@ function blurHandler( e ) {
     }
 }
 
+function sendButtonHandler() {
 
+    if ( validation.email === '' ) validation.setEmailNotValid( true )
+    if ( validation.password === '') validation.setPasswordNotValid( true )
+    
+    /*
+    if ( validation.isFormValid ) {
+        
+    }
+    */
+}
 
 const Login = observer( () => {
 
@@ -78,6 +85,7 @@ const Login = observer( () => {
                             onBlur={e => blurHandler(e)}
                             onChange={e => emailHandler(e)}
                             inputInner={(validation.isEmailNotValid && validation.emailError) && <Error text={validation.emailError}/>}
+                            style={ (validation.isEmailNotValid && validation.emailError) ? {border: '1px solid red'} : {border: '1px solid #f7931a'} }
                 />
                 <Input
                             type="password" 
@@ -89,13 +97,14 @@ const Login = observer( () => {
                             value={validation.password}
                             onBlur={e => blurHandler(e)}
                             onChange={e => passwordHandler(e)}
-                            inputInner={(validation.isPasswordNotValid && validation.passwordError) && <Error text={validation.passwordError}/>}                 
+                            inputInner={(validation.isPasswordNotValid && validation.passwordError) && <Error text={validation.passwordError}/>}
+                            style={ (validation.isPasswordNotValid && validation.passwordError) ? {border: '1px solid red'} : {border: '1px solid #f7931a'} }                 
                 />
                 <Button
                             className='button'
                             buttonInner='Войти'
                             type="submit" 
-                            disabled={!validation.isFormValid}
+                            onClick={() => sendButtonHandler()}
                 />
                 <div 
                             className="link__container"

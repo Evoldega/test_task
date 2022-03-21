@@ -27,6 +27,7 @@ const Button = ({
                 type={type}
                 className={`${isLink ? 'link' : Tag}`}
                 disabled={disabled}
+                onClick={onClick}
             >
                 {buttonInner}
             </Tag>

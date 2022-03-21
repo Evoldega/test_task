@@ -28,6 +28,7 @@ const Input = (props) => {
                             className={`input__input`}
                             placeholder={props.placeholder}
                             autoComplete='off'
+                            style={props.style}
             />
             {props.inputInner}  
     </div>
